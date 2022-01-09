@@ -9,11 +9,6 @@ const Favorites = () => {
   const {favorites} = useSelector(state => state.moviesReducer);
   const dispatch = useDispatch();
 
-  const removeFromFavorites = movie => dispatch(removeFavorite(movie));
-
-  const handleRemoveFavorite = movie => {
-    removeFromFavorites(movie);
-  };
   return (
     <View style={{flex: 1, marginTop: 44, paddingHorizontal: 20}}>
       <Text style={{fontSize: 22}}>Favorites</Text>
@@ -66,7 +61,7 @@ const Favorites = () => {
                           {item.vote_count}
                         </Text>
                         <TouchableOpacity
-                          onPress={() => handleRemoveFavorite(item)}
+                          onPress={() => dispatch(removeFavorite(item))}
                           activeOpacity={0.7}
                           style={{
                             marginLeft: 14,

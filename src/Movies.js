@@ -7,24 +7,14 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {getMovies, addFavorite, removeFavorite} from '../redux/actions';
 
 export default function Movies() {
-  // const { movies } = useSelector(state => state.moviesReducer);
   const {movies, favorites} = useSelector(state => state.moviesReducer);
   const dispatch = useDispatch();
+
   const fetchMovies = () => dispatch(getMovies());
 
   useEffect(() => {
     fetchMovies();
   }, []);
-
-  const addToFavorites = movie => dispatch(addFavorite(movie));
-  const removeFromFavorites = movie => dispatch(removeFavorite(movie));
-
-  const handleAddFavorite = movie => {
-    addToFavorites(movie);
-  };
-  const handleRemoveFavorite = movie => {
-    removeFromFavorites(movie);
-  };
 
   const exists = movie => {
     if (favorites.filter(item => item.id === movie.id).length > 0) {
@@ -77,8 +67,8 @@ export default function Movies() {
                       <TouchableOpacity
                         onPress={() =>
                           exists(item)
-                            ? handleRemoveFavorite(item)
-                            : handleAddFavorite(item)
+                            ? dispatch(removeFavorite(item))
+                            : dispatch(addFavorite(item))
                         }
                         activeOpacity={0.7}
                         style={{
