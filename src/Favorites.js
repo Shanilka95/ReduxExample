@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Text, View, FlatList, TouchableOpacity, Image} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
@@ -9,7 +10,7 @@ const Favorites = () => {
   const dispatch = useDispatch();
 
   const removeFromFavorites = movie => dispatch(removeFavorite(movie));
-  
+
   const handleRemoveFavorite = movie => {
     removeFromFavorites(movie);
   };

@@ -5,6 +5,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 // import screens
 import Movies from './Movies';
 import Favorites from './Favorites';
+import Home from './Home';
 const Tab = createBottomTabNavigator();
 
 const tabBarOptions = {
@@ -34,6 +35,16 @@ const RootNavigator = () => {
           options={{
             tabBarIcon: ({color, size}) => (
               <MaterialIcons name="favorite" color={color} size={size} />
+            ),
+          }}
+        />
+
+        <Tab.Screen
+          name="Home"
+          component={Home}
+          options={{
+            tabBarIcon: ({color, size}) => (
+              <MaterialIcons name="home" color={color} size={size} />
             ),
           }}
         />

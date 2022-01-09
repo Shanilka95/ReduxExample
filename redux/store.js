@@ -1,4 +1,10 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux';
+/* eslint-disable prettier/prettier */
+/* eslint-disable comma-dangle */
+import {
+  createStore,
+  combineReducers,
+  applyMiddleware
+} from 'redux';
 import thunk from 'redux-thunk';
 import moviesReducer from './reducers';
 

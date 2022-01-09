@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react-native/no-inline-styles */
+import React, {useEffect} from 'react';
+import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {getMovies, addFavorite, removeFavorite} from '../redux/actions';
 
@@ -10,7 +12,9 @@ export default function Movies() {
   const dispatch = useDispatch();
   const fetchMovies = () => dispatch(getMovies());
 
-  useEffect(() => {fetchMovies()}, []);
+  useEffect(() => {
+    fetchMovies();
+  }, []);
 
   const addToFavorites = movie => dispatch(addFavorite(movie));
   const removeFromFavorites = movie => dispatch(removeFavorite(movie));
@@ -30,27 +34,28 @@ export default function Movies() {
   };
 
   return (
-    <View style={{ flex: 1, marginTop: 44, paddingHorizontal: 20 }}>
-      <Text style={{ fontSize: 22 }}>Popular Movies</Text>
-      <View style={{ flex: 1, marginTop: 12 }}>
+    <View style={{flex: 1, marginTop: 44, paddingHorizontal: 20}}>
+      <Text style={{fontSize: 22}}>Popular Movies</Text>
+      <View style={{flex: 1, marginTop: 12}}>
         <FlatList
           data={movies.results}
           keyExtractor={item => item.id.toString()}
-          renderItem={({ item }) => {
-            const IMAGE_URL = 'https://image.tmdb.org/t/p/w185' + item.poster_path;
+          renderItem={({item}) => {
+            const IMAGE_URL =
+              'https://image.tmdb.org/t/p/w185' + item.poster_path;
             return (
-              <View style={{ marginVertical: 12 }}>
-                <View style={{ flexDirection: 'row', flex: 1 }}>
+              <View style={{marginVertical: 12}}>
+                <View style={{flexDirection: 'row', flex: 1}}>
                   <Image
                     source={{
                       uri: IMAGE_URL,
                     }}
                     resizeMode="cover"
-                    style={{ width: 100, height: 150, borderRadius: 10 }}
+                    style={{width: 100, height: 150, borderRadius: 10}}
                   />
-                  <View style={{ flex: 1, marginLeft: 12 }}>
+                  <View style={{flex: 1, marginLeft: 12}}>
                     <View>
-                      <Text style={{ fontSize: 22, paddingRight: 16 }}>
+                      <Text style={{fontSize: 22, paddingRight: 16}}>
                         {item.original_title}
                       </Text>
                     </View>
@@ -70,7 +75,11 @@ export default function Movies() {
                         {item.vote_count}
                       </Text>
                       <TouchableOpacity
-                        onPress={() => exists(item) ? handleRemoveFavorite(item) : handleAddFavorite(item)}
+                        onPress={() =>
+                          exists(item)
+                            ? handleRemoveFavorite(item)
+                            : handleAddFavorite(item)
+                        }
                         activeOpacity={0.7}
                         style={{
                           marginLeft: 14,
@@ -82,7 +91,6 @@ export default function Movies() {
                           height: 40,
                           width: 40,
                         }}>
-
                         <MaterialIcons
                           color="orange"
                           size={32}
@@ -100,7 +108,4 @@ export default function Movies() {
       </View>
     </View>
   );
-};
-
-
-
+}

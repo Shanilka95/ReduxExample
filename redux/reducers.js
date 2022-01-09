@@ -1,12 +1,17 @@
+/* eslint-disable prettier/prettier */
 import {
-    GET_MOVIES, ADD_FAVORITE_ITEM, REMOVE_FAVORITE_ITEM,
-    ADD_TODO_ITEM, REMOVE_TODO_ITEM, CHANGE
+    GET_MOVIES,
+    ADD_FAVORITE_ITEM,
+    REMOVE_FAVORITE_ITEM,
+    ADD_TODO_ITEM,
+    REMOVE_TODO_ITEM,
+    CHANGE,
 } from './actions';
 const initialState = {
     movies: [],
     favorites: [],
     todoList: [],
-    language: null
+    language: null,
 };
 function moviesReducer(state = initialState, action) {
     switch (action.type) {
@@ -29,9 +34,7 @@ function moviesReducer(state = initialState, action) {
         case REMOVE_TODO_ITEM:
             return {
                 ...state,
-                todoList: state.todoList.filter(
-                    todo => todo !== action.payload,
-                ),
+                todoList: state.todoList.filter(todo => todo !== action.payload),
             };
 
         case CHANGE:

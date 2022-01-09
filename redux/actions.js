@@ -1,14 +1,16 @@
-
+/* eslint-disable no-unreachable */
+/* eslint-disable prettier/prettier */
 import axios from 'axios';
 export const GET_MOVIES = 'GET_MOVIES';
 export const ADD_FAVORITE_ITEM = 'ADD_FAVORITE_ITEM';
 export const REMOVE_FAVORITE_ITEM = 'REMOVE_FAVORITE_ITEM';
 
-
 export const getMovies = () => {
     try {
         return async dispatch => {
-            const res = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=64cda9458a0b50a8a6539c5bce6042a3&page=1');
+            const res = await axios.get(
+                'https://api.themoviedb.org/3/movie/popular?api_key=64cda9458a0b50a8a6539c5bce6042a3&page=1',
+            );
             if (res.data) {
                 dispatch({
                     type: GET_MOVIES,
@@ -18,8 +20,7 @@ export const getMovies = () => {
                 console.log('Unable to fetch');
             }
         };
-    } catch (error) {
-    }
+    } catch (error) { }
 };
 
 export const addFavorite = movie => dispatch => {
@@ -41,7 +42,6 @@ export const removeFavorite = movie => dispatch => {
 export const ADD_TODO_ITEM = 'ADD_TODO_ITEM';
 export const REMOVE_TODO_ITEM = 'REMOVE_TODO_ITEM';
 export const CHANGE = 'CHANGE';
-
 
 export const addTodo = todo => dispatch => {
     dispatch({
